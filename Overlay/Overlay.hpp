@@ -49,7 +49,7 @@ namespace Render
 
 namespace Menu
 {
-	void RenderStatic();
+	void RenderWatermark();
 
 	void RenderMenu();
 }
@@ -113,6 +113,28 @@ namespace ImGui
 	float GetX();
 
 	float GetY();
+
+	void SetCreationTime();
+
+	bool IsExpired();
+
+	void SetNotifyMessage(const char* text);
+
+	void ResetNotifyMessage();
+
+	void FadeNotifyMessage();
+
+	void RenderNotifyMessage(const char* text);
+
+	void RenderNotifyWindow(ImVec2 pos, ImVec2 size);
+
+	void SetupConfigIcon();
+
+	void SetupDoubleButtonFeatures(const char* featureName1, const char* featureName2, bool* featureBool1, bool* featureBoolLoaded, bool* featureBool2, BOOL newLine);
+
+	void SetupLoadedConfigText();
+
+	void SetupConfigSaveSettings();
 
 	void SetGUITheme();
 #pragma endregion

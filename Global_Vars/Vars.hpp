@@ -4,6 +4,7 @@
 namespace UI
 {
 	extern bool bShowMenu;
+	extern bool bShowWatermark;
 	extern HWND hWnd;
 	extern int iLogoWidth;
 	extern int iLogoHeight;

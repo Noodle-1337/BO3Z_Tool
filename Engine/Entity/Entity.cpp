@@ -282,6 +282,23 @@ namespace SDK
 			GameValues::fPlayer4NewRunSpeedValue = (float)FeatureSettings::iP4RunValue;
 			Utils::Write((BYTE*)playerRunSpeedAddr + (Offsets::playerArraySizeOffset * index), (BYTE*)&GameValues::fPlayer4NewRunSpeedValue, sizeof(GameValues::fPlayer4NewRunSpeedValue), Game::hProc);
 			break;
+		default:
+			if (GameValues::fPlayer1NewRunSpeedValue > 1.f)
+			{
+				Utils::Write((BYTE*)playerRunSpeedAddr + (Offsets::playerArraySizeOffset * 0), (BYTE*)&GameValues::fPlayerDefaultRunSpeedValue, sizeof(GameValues::fPlayerDefaultRunSpeedValue), Game::hProc);
+			}
+			if (GameValues::fPlayer2NewRunSpeedValue > 1.f)
+			{
+				Utils::Write((BYTE*)playerRunSpeedAddr + (Offsets::playerArraySizeOffset * 1), (BYTE*)&GameValues::fPlayerDefaultRunSpeedValue, sizeof(GameValues::fPlayerDefaultRunSpeedValue), Game::hProc);
+			}
+			if (GameValues::fPlayer3NewRunSpeedValue > 1.f)
+			{
+				Utils::Write((BYTE*)playerRunSpeedAddr + (Offsets::playerArraySizeOffset * 2), (BYTE*)&GameValues::fPlayerDefaultRunSpeedValue, sizeof(GameValues::fPlayerDefaultRunSpeedValue), Game::hProc);
+			}
+			if (GameValues::fPlayer4NewRunSpeedValue > 1.f)
+			{
+				Utils::Write((BYTE*)playerRunSpeedAddr + (Offsets::playerArraySizeOffset * 3), (BYTE*)&GameValues::fPlayerDefaultRunSpeedValue, sizeof(GameValues::fPlayerDefaultRunSpeedValue), Game::hProc);
+			}
 		}
 	}
 

@@ -19,6 +19,8 @@
 * 
 *	Update : 02/08/24 | Added base Config System. Still need to add the rest of the features to be exported and imported from the config system.
 * 
+*	Update : 06/12/24 | Added all ESP/Player exploit features to the Config system. Also added a Watermark toggle.
+* 
 * 
 *	TODO:
 * 
@@ -38,9 +40,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	while (true)
 	{
 		Engine::IsInGame();
-		Engine::PlayerFeatures();
+		//Engine::PlayerFeatures();
 		Engine::DisableAllFeatures();
 		ConfigSystem::LoadAndSaveConfig();
-		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+		std::this_thread::sleep_for(std::chrono::milliseconds(3));
 	}
 }

@@ -167,7 +167,7 @@ void Overlay::Loop()
             colors[ImGuiCol_Border] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
             Render::Start();
             Menu::RenderMenu();
-            Menu::RenderStatic();
+            Menu::RenderWatermark();
 			Engine::ESP::DoESP();
 			Engine::ESP::MiscFeatures();
             Render::End();
@@ -179,7 +179,7 @@ void Overlay::Loop()
             colors[ImGuiCol_WindowBg] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
             colors[ImGuiCol_Border] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
             Render::Start();
-            Menu::RenderStatic();
+            Menu::RenderWatermark();
 			Engine::ESP::DoESP();
 			Engine::ESP::MiscFeatures();
             Render::End();
@@ -1242,6 +1242,7 @@ namespace ImGui
 						ImGui::ColorEditFeature("  Distance", (float*)&VisualSettings::distanceImColor, TRUE);
 						ImGui::ColorEditFeature("  Crosshair +", (float*)&VisualSettings::crosshairImColor, TRUE);
 						ImGui::ColorEditFeature("  FOV", (float*)&VisualSettings::fovImColor, TRUE);
+						ImGui::ToggleNL("  Draw Watermark", &UI::bShowWatermark, FALSE);
 						ImGui::Unindent(12);
 					} ImGui::PopStyleColor(); ImGui::PopStyleVar(); ImGui::EndChild();
 				}
@@ -1417,9 +1418,12 @@ namespace ImGui
 #pragma endregion
 }
 
-void Menu::RenderStatic()
+void Menu::RenderWatermark()
 {
-    Render::EasyText(ImVec2(10, 10), ImColor(255, 255, 255, 255), "Open Source BO3 ZM Tool", 15.f);
+	if (UI::bShowWatermark)
+	{
+		Render::EasyText(ImVec2(10, 10), ImGui::BO3Orange, "Open Source BO3 ZM Tool", 15.f);
+	}
 }
 
 void Menu::RenderMenu()

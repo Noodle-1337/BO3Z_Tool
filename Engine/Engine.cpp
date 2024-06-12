@@ -49,248 +49,252 @@ namespace Engine
 	// Features for Player 1 - 4 ( also includes zombies features ).
 	void PlayerFeatures()
 	{
-		if (FeatureSettings::bIsInGame)
+		while (true)
 		{
+			if (FeatureSettings::bIsInGame)
+			{
 #pragma region Player 1 Features.
-			if (FeatureSettings::bP1InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer1Index, &FeatureSettings::bTrueState);
-			}
-			if (!FeatureSettings::bP1InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer1Index, &FeatureSettings::bFalseState);
-			}
-			if (FeatureSettings::bP1InfiniteClipAmmo)
-			{
-				entity.SetPlayerClipAmmo(GameValues::iPlayer1Index);
-			}
-			if (FeatureSettings::bP1InfiniteStockAmmo)
-			{
-				entity.SetPlayerStockAmmo(GameValues::iPlayer1Index);
-			}
-			if (FeatureSettings::bP1DynamicPoints)
-			{
-				entity.SetCustomPlayerPoints(GameValues::iPlayer1Index);
-				FeatureSettings::bP1DynamicPoints = false;
-			}
-			if (FeatureSettings::bP1InfinitePoints)
-			{
-				entity.FreezePlayerPoints(GameValues::iPlayer1Index);
-			}
-			if (FeatureSettings::bP1AlwaysInstaKill)
-			{
-				entity.EnableInstaKill();
-			}
-			if (FeatureSettings::bP1RunSpeed)
-			{
-				entity.SetPlayerRunSpeed(GameValues::iPlayer1Index);
-				FeatureSettings::bP1RunSpeed = false;
-			}
-			if (FeatureSettings::bP1JumpHeight)
-			{
-				entity.SetPlayerJumpHeight(&FeatureSettings::bTrueState);
-			}
-			if (FeatureSettings::bNoRecoilOn)
-			{
-				entity.SetNoRecoil(&FeatureSettings::bTrueState);
-			}
-			if (!FeatureSettings::bNoRecoilOn)
-			{
-				entity.SetNoRecoil(&FeatureSettings::bFalseState);
-			}
-			/*if (FeatureSettings::bNoSpreadOn)
-			{
-				entity.EnableNoSpread();
-			}*/
-			if (FeatureSettings::bP1RapidFire)
-			{
-				entity.EnableRapidFire(GameValues::iPlayer1Index);
-			}
-			/*if (FeatureSettings::bJetPack)
-			{
-				entity.EnablePlayerJetPck();
-			}*/
-			if (FeatureSettings::bP1WCycle)
-			{
-				entity.SetPlayerWeapon(GameValues::iPlayer1Index);
-				FeatureSettings::bP1WCycle = false;
-			}
-			if (FeatureSettings::bP1WCycleKey)
-			{
-				if (GetAsyncKeyState(AimSettings::iAimKey) & 1)
+				if (FeatureSettings::bP1InfiniteHealth)
 				{
-					FeatureSettings::iP1WCValue = FeatureSettings::iP1WCValue + 1;
-					entity.SetPlayerWeapon(GameValues::iPlayer1Index);
+					entity.SetGodMode(GameValues::iPlayer1Index, &FeatureSettings::bTrueState);
 				}
-			}
+				if (!FeatureSettings::bP1InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer1Index, &FeatureSettings::bFalseState);
+				}
+				if (FeatureSettings::bP1InfiniteClipAmmo)
+				{
+					entity.SetPlayerClipAmmo(GameValues::iPlayer1Index);
+				}
+				if (FeatureSettings::bP1InfiniteStockAmmo)
+				{
+					entity.SetPlayerStockAmmo(GameValues::iPlayer1Index);
+				}
+				if (FeatureSettings::bP1DynamicPoints)
+				{
+					entity.SetCustomPlayerPoints(GameValues::iPlayer1Index);
+					FeatureSettings::bP1DynamicPoints = false;
+				}
+				if (FeatureSettings::bP1InfinitePoints)
+				{
+					entity.FreezePlayerPoints(GameValues::iPlayer1Index);
+				}
+				if (FeatureSettings::bP1AlwaysInstaKill)
+				{
+					entity.EnableInstaKill();
+				}
+				if (FeatureSettings::bP1RunSpeed)
+				{
+					entity.SetPlayerRunSpeed(GameValues::iPlayer1Index);
+					FeatureSettings::bP1RunSpeed = false;
+				}
+				if (FeatureSettings::bP1JumpHeight)
+				{
+					entity.SetPlayerJumpHeight(&FeatureSettings::bTrueState);
+				}
+				if (FeatureSettings::bNoRecoilOn)
+				{
+					entity.SetNoRecoil(&FeatureSettings::bTrueState);
+				}
+				if (!FeatureSettings::bNoRecoilOn)
+				{
+					entity.SetNoRecoil(&FeatureSettings::bFalseState);
+				}
+				/*if (FeatureSettings::bNoSpreadOn)
+				{
+					entity.EnableNoSpread();
+				}*/
+				if (FeatureSettings::bP1RapidFire)
+				{
+					entity.EnableRapidFire(GameValues::iPlayer1Index);
+				}
+				/*if (FeatureSettings::bJetPack)
+				{
+					entity.EnablePlayerJetPck();
+				}*/
+				if (FeatureSettings::bP1WCycle)
+				{
+					entity.SetPlayerWeapon(GameValues::iPlayer1Index);
+					FeatureSettings::bP1WCycle = false;
+				}
+				if (FeatureSettings::bP1WCycleKey)
+				{
+					if (GetAsyncKeyState(AimSettings::iAimKey) & 1)
+					{
+						FeatureSettings::iP1WCValue = FeatureSettings::iP1WCValue + 1;
+						entity.SetPlayerWeapon(GameValues::iPlayer1Index);
+					}
+				}
 #pragma endregion
 
 #pragma region Player 2 Features.
-			if (FeatureSettings::bP2InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer2Index, &FeatureSettings::bTrueState);
-			}
-			if (!FeatureSettings::bP2InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer2Index, &FeatureSettings::bFalseState);
-			}
-			if (FeatureSettings::bP2InfiniteClipAmmo)
-			{
-				entity.SetPlayerClipAmmo(GameValues::iPlayer2Index);
-			}
-			if (FeatureSettings::bP2InfiniteStockAmmo)
-			{
-				entity.SetPlayerStockAmmo(GameValues::iPlayer2Index);
-			}
-			if (FeatureSettings::bP2DynamicPoints)
-			{
-				entity.FreezePlayerPoints(GameValues::iPlayer2Index);
-				FeatureSettings::bP2DynamicPoints = false;
-			}
-			if (FeatureSettings::bP2InfinitePoints)
-			{
-				entity.FreezePlayerPoints(GameValues::iPlayer2Index);
-			}
-			if (FeatureSettings::bP2RunSpeed)
-			{
-				entity.SetPlayerRunSpeed(GameValues::iPlayer2Index);
-				FeatureSettings::bP2RunSpeed = false;
-			}
-			if (FeatureSettings::bP2RapidFire)
-			{
-				entity.EnableRapidFire(GameValues::iPlayer2Index);
-			}
-			if (FeatureSettings::bP2WCycle)
-			{
-				entity.SetPlayerWeapon(GameValues::iPlayer2Index);
-			}
+				if (FeatureSettings::bP2InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer2Index, &FeatureSettings::bTrueState);
+				}
+				if (!FeatureSettings::bP2InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer2Index, &FeatureSettings::bFalseState);
+				}
+				if (FeatureSettings::bP2InfiniteClipAmmo)
+				{
+					entity.SetPlayerClipAmmo(GameValues::iPlayer2Index);
+				}
+				if (FeatureSettings::bP2InfiniteStockAmmo)
+				{
+					entity.SetPlayerStockAmmo(GameValues::iPlayer2Index);
+				}
+				if (FeatureSettings::bP2DynamicPoints)
+				{
+					entity.FreezePlayerPoints(GameValues::iPlayer2Index);
+					FeatureSettings::bP2DynamicPoints = false;
+				}
+				if (FeatureSettings::bP2InfinitePoints)
+				{
+					entity.FreezePlayerPoints(GameValues::iPlayer2Index);
+				}
+				if (FeatureSettings::bP2RunSpeed)
+				{
+					entity.SetPlayerRunSpeed(GameValues::iPlayer2Index);
+					FeatureSettings::bP2RunSpeed = false;
+				}
+				if (FeatureSettings::bP2RapidFire)
+				{
+					entity.EnableRapidFire(GameValues::iPlayer2Index);
+				}
+				if (FeatureSettings::bP2WCycle)
+				{
+					entity.SetPlayerWeapon(GameValues::iPlayer2Index);
+				}
 #pragma endregion
 
 #pragma region Player 3 Features.
-			if (FeatureSettings::bP3InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer3Index, &FeatureSettings::bTrueState);
-			}
-			if (!FeatureSettings::bP3InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer3Index, &FeatureSettings::bFalseState);
-			}
-			if (FeatureSettings::bP3InfiniteClipAmmo)
-			{
-				entity.SetPlayerClipAmmo(GameValues::iPlayer3Index);
-			}
-			if (FeatureSettings::bP3InfiniteStockAmmo)
-			{
-				entity.SetPlayerStockAmmo(GameValues::iPlayer3Index);
-			}
-			if (FeatureSettings::bP3DynamicPoints)
-			{
-				entity.FreezePlayerPoints(GameValues::iPlayer3Index);
-				FeatureSettings::bP3DynamicPoints = false;
-			}
-			if (FeatureSettings::bP3InfinitePoints)
-			{
-				entity.FreezePlayerPoints(GameValues::iPlayer3Index);
-			}
-			if (FeatureSettings::bP3RunSpeed)
-			{
-				entity.SetPlayerRunSpeed(GameValues::iPlayer3Index);
-				FeatureSettings::bP3RunSpeed = false;
-			}
-			if (FeatureSettings::bP3RapidFire)
-			{
-				entity.EnableRapidFire(GameValues::iPlayer3Index);
-			}
-			if (FeatureSettings::bP3WCycle)
-			{
-				entity.SetPlayerWeapon(GameValues::iPlayer3Index);
-			}
+				if (FeatureSettings::bP3InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer3Index, &FeatureSettings::bTrueState);
+				}
+				if (!FeatureSettings::bP3InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer3Index, &FeatureSettings::bFalseState);
+				}
+				if (FeatureSettings::bP3InfiniteClipAmmo)
+				{
+					entity.SetPlayerClipAmmo(GameValues::iPlayer3Index);
+				}
+				if (FeatureSettings::bP3InfiniteStockAmmo)
+				{
+					entity.SetPlayerStockAmmo(GameValues::iPlayer3Index);
+				}
+				if (FeatureSettings::bP3DynamicPoints)
+				{
+					entity.FreezePlayerPoints(GameValues::iPlayer3Index);
+					FeatureSettings::bP3DynamicPoints = false;
+				}
+				if (FeatureSettings::bP3InfinitePoints)
+				{
+					entity.FreezePlayerPoints(GameValues::iPlayer3Index);
+				}
+				if (FeatureSettings::bP3RunSpeed)
+				{
+					entity.SetPlayerRunSpeed(GameValues::iPlayer3Index);
+					FeatureSettings::bP3RunSpeed = false;
+				}
+				if (FeatureSettings::bP3RapidFire)
+				{
+					entity.EnableRapidFire(GameValues::iPlayer3Index);
+				}
+				if (FeatureSettings::bP3WCycle)
+				{
+					entity.SetPlayerWeapon(GameValues::iPlayer3Index);
+				}
 #pragma endregion
 
 #pragma region Player 4 Features.
-			if (FeatureSettings::bP4InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer4Index, &FeatureSettings::bTrueState);
-			}
-			if (!FeatureSettings::bP4InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer4Index, &FeatureSettings::bFalseState);
-			}
-			if (FeatureSettings::bP4InfiniteClipAmmo)
-			{
-				entity.SetPlayerClipAmmo(GameValues::iPlayer4Index);
-			}
-			if (FeatureSettings::bP4InfiniteStockAmmo)
-			{
-				entity.SetPlayerStockAmmo(GameValues::iPlayer4Index);
-			}
-			if (FeatureSettings::bP4DynamicPoints)
-			{
-				entity.FreezePlayerPoints(GameValues::iPlayer4Index);
-				FeatureSettings::bP4DynamicPoints = false;
-			}
-			if (FeatureSettings::bP4InfinitePoints)
-			{
-				entity.FreezePlayerPoints(GameValues::iPlayer4Index);
-			}
-			if (FeatureSettings::bP4RunSpeed)
-			{
-				entity.SetPlayerRunSpeed(GameValues::iPlayer4Index);
-				FeatureSettings::bP4RunSpeed = false;
-			}
-			if (FeatureSettings::bP4RapidFire)
-			{
-				entity.EnableRapidFire(GameValues::iPlayer4Index);
-			}
-			if (FeatureSettings::bP4WCycle)
-			{
-				entity.SetPlayerWeapon(GameValues::iPlayer4Index);
-			}
+				if (FeatureSettings::bP4InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer4Index, &FeatureSettings::bTrueState);
+				}
+				if (!FeatureSettings::bP4InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer4Index, &FeatureSettings::bFalseState);
+				}
+				if (FeatureSettings::bP4InfiniteClipAmmo)
+				{
+					entity.SetPlayerClipAmmo(GameValues::iPlayer4Index);
+				}
+				if (FeatureSettings::bP4InfiniteStockAmmo)
+				{
+					entity.SetPlayerStockAmmo(GameValues::iPlayer4Index);
+				}
+				if (FeatureSettings::bP4DynamicPoints)
+				{
+					entity.FreezePlayerPoints(GameValues::iPlayer4Index);
+					FeatureSettings::bP4DynamicPoints = false;
+				}
+				if (FeatureSettings::bP4InfinitePoints)
+				{
+					entity.FreezePlayerPoints(GameValues::iPlayer4Index);
+				}
+				if (FeatureSettings::bP4RunSpeed)
+				{
+					entity.SetPlayerRunSpeed(GameValues::iPlayer4Index);
+					FeatureSettings::bP4RunSpeed = false;
+				}
+				if (FeatureSettings::bP4RapidFire)
+				{
+					entity.EnableRapidFire(GameValues::iPlayer4Index);
+				}
+				if (FeatureSettings::bP4WCycle)
+				{
+					entity.SetPlayerWeapon(GameValues::iPlayer4Index);
+				}
 #pragma endregion
 
 #pragma region Zombie Features.
-			if (FeatureSettings::bZombieTP)
-			{
-				entity.EnableZombieTP();
-			}
-			if (FeatureSettings::bZombieCount)
-			{
-				entity.GetZombieCount();
-			}
+				if (FeatureSettings::bZombieTP)
+				{
+					entity.EnableZombieTP();
+				}
+				if (FeatureSettings::bZombieCount)
+				{
+					entity.GetZombieCount();
+				}
 #pragma endregion
-		}
-		if (!FeatureSettings::bIsInGame)
-		{
-			// Player 1 Features.
-			if (FeatureSettings::bP1InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer1Index, &FeatureSettings::bFalseState);
 			}
-			if (FeatureSettings::bNoRecoilOn)
+			if (!FeatureSettings::bIsInGame)
 			{
-				entity.SetNoRecoil(&FeatureSettings::bFalseState);
+				// Player 1 Features.
+				if (FeatureSettings::bP1InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer1Index, &FeatureSettings::bFalseState);
+				}
+				if (FeatureSettings::bNoRecoilOn)
+				{
+					entity.SetNoRecoil(&FeatureSettings::bFalseState);
+				}
+				/*if (FeatureSettings::bJetPack)
+				{
+					FeatureSettings::bJetPack = false;
+					entity.fGlobalJetPackValue = 0.f;
+					entity.fGlobalJetPackAddValue = 8.f;
+				}*/
+				// Player 2 Features.
+				if (FeatureSettings::bP2InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer2Index, &FeatureSettings::bFalseState);
+				}
+				// Player 3 Features.
+				if (FeatureSettings::bP3InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer3Index, &FeatureSettings::bFalseState);
+				}
+				// Player 4 Features.
+				if (FeatureSettings::bP4InfiniteHealth)
+				{
+					entity.SetGodMode(GameValues::iPlayer4Index, &FeatureSettings::bFalseState);
+				}
 			}
-			/*if (FeatureSettings::bJetPack)
-			{
-				FeatureSettings::bJetPack = false;
-				entity.fGlobalJetPackValue = 0.f;
-				entity.fGlobalJetPackAddValue = 8.f;
-			}*/
-			// Player 2 Features.
-			if (FeatureSettings::bP2InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer2Index, &FeatureSettings::bFalseState);
-			}
-			// Player 3 Features.
-			if (FeatureSettings::bP3InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer3Index, &FeatureSettings::bFalseState);
-			}
-			// Player 4 Features.
-			if (FeatureSettings::bP4InfiniteHealth)
-			{
-				entity.SetGodMode(GameValues::iPlayer4Index, &FeatureSettings::bFalseState);
-			}
+			std::this_thread::sleep_for(std::chrono::milliseconds(3));
 		}
 	}
 	// Disbale All Features.
@@ -366,6 +370,7 @@ namespace Engine
 			*/
 			entity.SetGodMode(GameValues::iPlayer1Index, &FeatureSettings::bFalseState);
 			entity.SetNoRecoil(&FeatureSettings::bFalseState);
+			entity.SetPlayerRunSpeed(1337);
 			entity.SetPlayerJumpHeight(&FeatureSettings::bFalseState);
 			/*
 			*	Player 2 booleans

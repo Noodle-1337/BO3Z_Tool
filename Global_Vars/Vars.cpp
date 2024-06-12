@@ -3,6 +3,7 @@
 namespace UI
 {
 	bool bShowMenu = true;
+	bool bShowWatermark = true;
 	HWND hWnd = NULL;
 	int iLogoWidth = 128;
 	int iLogoHeight = 92;
@@ -131,7 +132,7 @@ namespace AimSettings
 namespace MiscSettings
 {
 	bool bCrosshair = true;
-	bool bPlayerFov = true;
+	bool bPlayerFov = false;
 	float fPlayerFovSize = 300.f;
 	int iZombieTPKey = 0x0;
 }
