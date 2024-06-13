@@ -132,7 +132,7 @@ namespace AimSettings
 namespace MiscSettings
 {
 	bool bCrosshair = true;
-	bool bPlayerFov = false;
+	bool bPlayerFov = true;
 	float fPlayerFovSize = 300.f;
 	int iZombieTPKey = 0x0;
 }
@@ -292,6 +292,7 @@ namespace GameValues
 	int iZombieInstaKillCurrentHealthValue = 0;
 	int iZombieMaxHealthValue = 0;
 	int iZombieNewHealthValue = 1;
+	int iZombieValidValue = 1337;
 	int iZombieNewCriticalValue = -1;
 	int iZombieCountValue = 0;
 	float fCurrentZombiesCoordsX = 0;
@@ -377,10 +378,12 @@ namespace Offsets
 	uintptr_t zombiesHeadXCoordAddr = 0;
 	uintptr_t zombiesHeadYCoordAddr = 0;
 	uintptr_t zombiesHeadZCoordAddr = 0;
+	uintptr_t zombiesValidAddr = 0;
 	uintptr_t zombieArraySize = 0x4F8; // New
 	uintptr_t zombieNextEntitiyOffset = 0x8;
 	std::vector <unsigned int> zombieHealthOffset = { 0x8, 0x2C8 }; // New
 	std::vector <unsigned int> zombieHealthMaxOffset = { 0x8, 0x2CC }; // New 
+	std::vector <unsigned int> zombieValidOffset = { 0x8, 0x2A0 }; // New
 	std::vector <unsigned int> zombieCoord = { 0x8, 0x230 }; // New
 	std::vector <unsigned int> zombieXCoord = { 0x8, 0x230 }; // New
 	std::vector <unsigned int> zombieYCoord = { 0x8, 0x234 }; // New 

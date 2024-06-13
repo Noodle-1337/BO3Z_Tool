@@ -16,6 +16,7 @@ namespace Engine
 
 	namespace Aimbot
 	{
+		extern SDK::Entity_t entityAim;
 		void DoAimbot();
 	}
 }

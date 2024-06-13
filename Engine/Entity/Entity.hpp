@@ -26,6 +26,7 @@ namespace SDK
 		uintptr_t zombieHealthMaxAddr = 0;
 		uintptr_t zombieGetPosAddr = 0;
 		uintptr_t zombieGetHeadPosAddr = 0;
+		uintptr_t zombieGetValidAddr = 0;
 
 #pragma region Player Functions
 		void SetPlayerAddr();
@@ -81,6 +82,8 @@ namespace SDK
 		int GetZombieHealth(int index);
 
 		int GetZombieHealthMax(int index);
+
+		int IsZombieValid(int index);
 
 		void EnableZombieTP();
 

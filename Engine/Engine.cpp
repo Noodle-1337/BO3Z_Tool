@@ -13,12 +13,14 @@ namespace Engine
 			{
 				entity.GetPlayerAddr();
 				entity.GetPlayerValues();
+				Aimbot::entityAim.GetPlayerAddr();
 				Game::bSetAddress = 2;
 			}
 			else if (Game::bSetAddress == 1)
 			{
 				entity.GetPlayerAddr();
 				entity.GetPlayerValues();
+				Aimbot::entityAim.GetPlayerAddr();
 				Game::bSetAddress = 2;
 			}
 			if (FeatureSettings::bIsInGame)
@@ -32,12 +34,14 @@ namespace Engine
 			{
 				entity.GetPlayerAddr();
 				entity.GetPlayerValues();
+				Aimbot::entityAim.GetPlayerAddr();
 				Game::bSetAddress = 1;
 			}
 			else if (Game::bSetAddress == 2)
 			{
 				entity.GetPlayerAddr();
 				entity.GetPlayerValues();
+				Aimbot::entityAim.GetPlayerAddr();
 				Game::bSetAddress = 1;
 			}
 			if (!FeatureSettings::bIsInGame)
@@ -411,6 +415,11 @@ namespace Engine
 					if (iCurrentZHealth < 1 || iCurrentZHealth == 0)
 						continue;
 
+					int iCurrentValid = entity.IsZombieValid(i);
+
+					if (iCurrentValid != 1 && iCurrentValid != 3)
+						continue;
+
 					vec2_t vScreen = { 0, 0 };
 					vec2_t vHead = { 0, 0 };
 					vec3_t vZombiePos = entity.GetZombiePos(i);
@@ -606,11 +615,16 @@ namespace Engine
 
 		__inline static int GetClosestTarget()
 		{
-			for (int i = 0; i < 80; i++)
+			for (int i = 0; i < 1000; i++)
 			{
 				int iCurrentZHealth = entityAim.GetZombieHealth(i);
 
 				if (iCurrentZHealth < 1 || iCurrentZHealth == 0)
+					continue;
+
+				int iCurrentValid = entityAim.IsZombieValid(i);
+
+				if (iCurrentValid != 1 && iCurrentValid != 3)
 					continue;
 
 				vec3_t vZombiePos = entityAim.GetZombiePos(i);
@@ -619,24 +633,25 @@ namespace Engine
 				vec3_t vHeadPos = { 0, 0, 0 };
 				vec2_t vScreen = { 0, 0 };
 				vec2_t vScreenHead = { 0, 0 };
+
 				if (SDK::WorldToScreen(vZombiePos, vScreen, (float)UI::iScreenWidth, (float)UI::iScreenHeight))
 				{
-					AimSettings::fCurrentDist = SDK::UnitsToMeter(vPlayerPos.distance_to(vZombiePos));
-
 					vHeadPos = entity.GetHeadPosition(vZombieHeadPos);
 
 					if (SDK::WorldToScreen(vHeadPos, vScreenHead, (float)UI::iScreenWidth, (float)UI::iScreenHeight))
 					{
-						float fov = DistanceCursor(vScreenHead);
+						float fFov = DistanceCursor(vScreenHead);
 
-						if (fov < MiscSettings::fPlayerFovSize)
+						if (fFov < MiscSettings::fPlayerFovSize)
 						{
-							if (AimSettings::fCurrentDist < AimSettings::fClosestDist)
+							float fCurrentDist = SDK::UnitsToMeter(vPlayerPos.distance_to(vZombiePos));
+
+							if (fCurrentDist < AimSettings::fClosestDist)
 							{
-								AimSettings::fClosestDist = AimSettings::fCurrentDist;
+								AimSettings::fClosestDist = fCurrentDist;
 								AimSettings::iBestTarget = i;
 							}
-							if (AimSettings::fCurrentDist > AimSettings::fClosestDist)
+							if (fCurrentDist > AimSettings::fClosestDist)
 							{
 								continue;
 							}
@@ -648,58 +663,43 @@ namespace Engine
 			return AimSettings::iBestTarget;
 		}
 
-		extern __inline void DoAimbot()
+		void DoAimbot()
 		{
-			while (true)
+			if (FeatureSettings::bAimbot)
 			{
-				if (FeatureSettings::bAimbot)
+				if (FeatureSettings::bIsInGame)
 				{
-					if (FeatureSettings::bIsInGame)
+					if (GetAsyncKeyState(VK_LMENU))
 					{
-						for (int i = 0; i < 80; i++)
+						int iCurrentTarget = GetClosestTarget();
+						vec3_t vZombiePos = entityAim.GetZombiePos(iCurrentTarget);
+						vec3_t vZombieHeadPos = entityAim.GetZombieHeadPos(iCurrentTarget);
+						vec3_t vPlayerPos = entityAim.GetPlayerPos();
+						vec3_t vHeadPos = { 0, 0, 0 };
+						vec2_t vScreen = { 0, 0 };
+						vec2_t vScreenHead = { 0, 0 };
+
+						if (SDK::WorldToScreen(vZombiePos, vScreen, (float)UI::iScreenWidth, (float)UI::iScreenHeight))
 						{
-							int iCurrentZHealth = entityAim.GetZombieHealth(i);
+							vHeadPos = entityAim.GetHeadPosition(vZombieHeadPos);
 
-							if (iCurrentZHealth < 1 || iCurrentZHealth == 0)
-								continue;
+							vHeadPos -= vec3_t{ +5, 0, +10 };
 
-							vec3_t vZombiePos = entityAim.GetZombiePos(i);
-							vec3_t vZombieHeadPos = entityAim.GetZombieHeadPos(i);
-							vec3_t vPlayerPos = entityAim.GetPlayerPos();
-							vec3_t vHeadPos = { 0, 0, 0 };
-
-							if (SDK::WorldToScreen(vZombiePos, AimSettings::vScreen, (float)UI::iScreenWidth, (float)UI::iScreenHeight))
+							if (SDK::WorldToScreen(vHeadPos, vScreenHead, (float)UI::iScreenWidth, (float)UI::iScreenHeight))
 							{
-								vHeadPos = entity.GetHeadPosition(vZombieHeadPos);
+								float fCurrentDist = SDK::UnitsToMeter(vPlayerPos.distance_to(vZombiePos));
 
-								if (SDK::WorldToScreen(vHeadPos, AimSettings::vHead, (float)UI::iScreenWidth, (float)UI::iScreenHeight))
+								if (fCurrentDist < 200.f)
 								{
-									AimSettings::fCurrentDist = SDK::UnitsToMeter(vPlayerPos.distance_to(vZombiePos));
+									float fFov = DistanceCursor(vScreenHead);
 
-									if (AimSettings::fCurrentDist < 200.f)
+									if (fFov < MiscSettings::fPlayerFovSize)
 									{
-										AimSettings::fFov = DistanceCursor(AimSettings::vHead);
-
-										if (AimSettings::fFov < MiscSettings::fPlayerFovSize)
-										{
-											if (AimSettings::fCurrentDist < AimSettings::fClosestDist)
-											{
-												AimSettings::fClosestDist = AimSettings::fCurrentDist;
-												if (GetAsyncKeyState(VK_LMENU))
-												{
-													MouseAim(Smooth(AimSettings::vHead));
-												}
-											}
-											if (AimSettings::fCurrentDist > AimSettings::fCurrentDist)
-											{
-												continue;
-											}
-										}
+										MouseAim(Smooth(vScreenHead));
 									}
 								}
 							}
 						}
-						AimSettings::fClosestDist = FLT_MAX;
 					}
 				}
 			}

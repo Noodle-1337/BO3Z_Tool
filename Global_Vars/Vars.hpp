@@ -293,6 +293,7 @@ namespace GameValues
 	extern int iZombieInstaKillCurrentHealthValue;
 	extern int iZombieMaxHealthValue;
 	extern int iZombieNewHealthValue;
+	extern int iZombieValidValue;
 	extern int iZombieNewCriticalValue;
 	extern int iZombieCountValue;
 	extern float fCurrentZombiesCoordsX;
@@ -378,10 +379,12 @@ namespace Offsets
 	extern uintptr_t zombiesHeadXCoordAddr;
 	extern uintptr_t zombiesHeadYCoordAddr;
 	extern uintptr_t zombiesHeadZCoordAddr;
+	extern uintptr_t zombiesValidAddr;
 	extern uintptr_t zombieArraySize;
 	extern uintptr_t zombieNextEntitiyOffset;
 	extern std::vector <unsigned int> zombieHealthOffset;
 	extern std::vector <unsigned int> zombieHealthMaxOffset;
+	extern std::vector <unsigned int> zombieValidOffset;
 	extern std::vector <unsigned int> zombieCoord;
 	extern std::vector <unsigned int> zombieXCoord;
 	extern std::vector <unsigned int> zombieYCoord;

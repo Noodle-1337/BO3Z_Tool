@@ -21,13 +21,15 @@
 * 
 *	Update : 06/12/24 | Added all ESP/Player exploit features to the Config system. Also added a Watermark toggle.
 * 
+*	Update : 06/13/24 | Fixed Aimbot system and added valid checks to both ESP/Aimbot.
+* 
 * 
 *	TODO:
 * 
-*	Aimbot: Refine Aimbot and add Skeleton/Bone Selection.
+*	Aimbot: Add Skeleton/Bone Selection.
 *	ESP: Add Skeleton ESP.
 *	Exploits: Fix JetPack feature. Fix No Spread.
-*	Config System: Add the rest of the features to the config system.
+*	Config System: Add Aimbot features to the config system.
 */
 
 #include "BO3_Main.hpp"
@@ -40,7 +42,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	while (true)
 	{
 		Engine::IsInGame();
-		//Engine::PlayerFeatures();
+		Engine::Aimbot::DoAimbot();
 		Engine::DisableAllFeatures();
 		ConfigSystem::LoadAndSaveConfig();
 		std::this_thread::sleep_for(std::chrono::milliseconds(3));

@@ -52,7 +52,6 @@ namespace Startup
 	{
 		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Overlay::Loop, 0 , 0, nullptr);
 		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Engine::PlayerFeatures, 0, 0, nullptr);
-		CreateThread(0, 0, (LPTHREAD_START_ROUTINE)Engine::Aimbot::DoAimbot, 0, 0, nullptr);
 	}
 }
 

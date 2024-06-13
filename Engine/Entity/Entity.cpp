@@ -68,6 +68,7 @@ namespace SDK
 		zombieHealthMaxAddr = Utils::PointerChain(Game::hProc, Offsets::zombieBase, Offsets::zombieHealthMaxOffset);
 		zombieGetPosAddr = Utils::PointerChain(Game::hProc, Offsets::zombieBase, Offsets::zombieCoord);
 		zombieGetHeadPosAddr = Utils::PointerChain(Game::hProc, Offsets::zombieBase, Offsets::zombieHeadCoord);
+		zombieGetValidAddr = Utils::PointerChain(Game::hProc, Offsets::zombieBase, Offsets::zombieValidOffset);
 	}
 
 	void Entity_t::GetPlayerValues()
@@ -376,18 +377,6 @@ namespace SDK
 		return GameValues::currentPlayerCoords;
 	}
 
-	vec3_t Entity_t::GetZombiePos(int index)
-	{
-		Utils::Read((BYTE*)zombieGetPosAddr + (Offsets::zombieArraySize * index), (BYTE*)&GameValues::currentZombieCoords, sizeof(GameValues::currentZombieCoords), Game::hProc);
-		return GameValues::currentZombieCoords;
-	}
-
-	vec3_t Entity_t::GetZombieHeadPos(int index)
-	{
-		Utils::Read((BYTE*)zombieGetHeadPosAddr + (Offsets::zombieArraySize * index), (BYTE*)&GameValues::currentZombieHeadCoords, sizeof(GameValues::currentZombieHeadCoords), Game::hProc);
-		return GameValues::currentZombieHeadCoords;
-	}
-
 	vec3_t Entity_t::GetHeadPosition(vec3_t origin)
 	{
 		return origin -= vec3_t{ 10, 20, 10 };
@@ -427,6 +416,24 @@ namespace SDK
 	{
 		Utils::Read((BYTE*)zombieHealthMaxAddr + (Offsets::zombieArraySize * index), (BYTE*)&GameValues::iZombieMaxHealthValue, sizeof(GameValues::iZombieMaxHealthValue), Game::hProc);
 		return GameValues::iZombieMaxHealthValue;
+	}
+
+	int Entity_t::IsZombieValid(int index)
+	{
+		Utils::Read((BYTE*)zombieGetValidAddr + (Offsets::zombieArraySize * index), (BYTE*)&GameValues::iZombieValidValue, sizeof(GameValues::iZombieValidValue), Game::hProc);
+		return GameValues::iZombieValidValue;
+	}
+
+	vec3_t Entity_t::GetZombiePos(int index)
+	{
+		Utils::Read((BYTE*)zombieGetPosAddr + (Offsets::zombieArraySize * index), (BYTE*)&GameValues::currentZombieCoords, sizeof(GameValues::currentZombieCoords), Game::hProc);
+		return GameValues::currentZombieCoords;
+	}
+
+	vec3_t Entity_t::GetZombieHeadPos(int index)
+	{
+		Utils::Read((BYTE*)zombieGetHeadPosAddr + (Offsets::zombieArraySize * index), (BYTE*)&GameValues::currentZombieHeadCoords, sizeof(GameValues::currentZombieHeadCoords), Game::hProc);
+		return GameValues::currentZombieHeadCoords;
 	}
 
 	void Entity_t::EnableZombieTP()
