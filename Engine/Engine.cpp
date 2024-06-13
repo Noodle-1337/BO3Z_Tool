@@ -669,7 +669,7 @@ namespace Engine
 			{
 				if (FeatureSettings::bIsInGame)
 				{
-					if (GetAsyncKeyState(VK_LMENU))
+					if (GetAsyncKeyState(AimSettings::iAimKey))
 					{
 						int iCurrentTarget = GetClosestTarget();
 						vec3_t vZombiePos = entityAim.GetZombiePos(iCurrentTarget);

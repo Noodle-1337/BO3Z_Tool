@@ -21,7 +21,7 @@
 * 
 *	Update : 06/12/24 | Added all ESP/Player exploit features to the Config system. Also added a Watermark toggle.
 * 
-*	Update : 06/13/24 | Fixed Aimbot system and added valid checks to both ESP/Aimbot.
+*	Update : 06/13/24 | Fixed Aimbot system and added valid checks to both ESP/Aimbot. Fixed Zombie Counter. Added Aimbot features to the config system and UI.
 * 
 * 
 *	TODO:

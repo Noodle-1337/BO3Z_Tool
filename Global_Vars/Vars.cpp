@@ -367,7 +367,7 @@ namespace Offsets
 	uintptr_t zombieBasePtr = 0xA549E48; // New
 	uintptr_t zombieBase = 0;
 	uintptr_t zombieBaseAddr = 0;
-	uintptr_t zombieCountPtr = 0x0A3D3A2C; // New
+	uintptr_t zombieCountPtr = 0xA3D1A2C; // New
 	uintptr_t zombieCountBase = 0;
 	uintptr_t zombieCountBaseAddr = 0;
 	uintptr_t zombiesCoordAddr = 0;

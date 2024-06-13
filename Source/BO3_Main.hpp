@@ -135,6 +135,9 @@ namespace ConfigSystem
 		FeatureSettings::bP4RunSpeed = j["P4 Run Speed"];
 		FeatureSettings::iP4RunValue = j["P4 Run Speed Value"];
 		UI::bShowWatermark = j["Draw Watermark"];
+		FeatureSettings::bAimbot = j["Aimbot"];
+		AimSettings::fAimSmooth = j["Aimbot Smooth"];
+		MiscSettings::fPlayerFovSize = j["FOV Size"];
 		VisualSettings::bZombie2DBox = j["2D Box"];
 		VisualSettings::bZombie2DBrackets = j["2D Bracket"];
 		VisualSettings::bZombieBoxFilled = j["Box Filled"];
@@ -187,6 +190,9 @@ namespace ConfigSystem
 			{ "P4 Run Speed", FeatureSettings::bP4RunSpeed },
 			{ "P4 Run Speed Value", FeatureSettings::iP4RunValue },
 			{ "Draw Watermark", UI::bShowWatermark },
+			{ "Aimbot", FeatureSettings::bAimbot },
+			{ "Aimbot Smooth", AimSettings::fAimSmooth },
+			{ "FOV Size", MiscSettings::fPlayerFovSize },
 			{ "2D Box", VisualSettings::bZombie2DBox },
 			{ "2D Bracket", VisualSettings::bZombie2DBrackets },
 			{ "Box Filled", VisualSettings::bZombieBoxFilled },

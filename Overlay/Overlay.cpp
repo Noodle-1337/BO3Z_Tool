@@ -449,6 +449,21 @@ namespace ImGui
 		}
 	}
 
+	void InputFloatNL(const char* featureName, float* featureFloat, float minValue, float maxValue, float size, BOOL sameLine, BOOL newLine)
+	{
+		ImGui::PushItemWidth(size);
+		ImGui::SliderFloat(featureName, featureFloat, minValue, maxValue, "%.1f");
+		ImGui::PopItemWidth();
+		if (sameLine)
+		{
+			ImGui::SameLine();
+		}
+		if (newLine)
+		{
+			ImGui::NewLine();
+		}
+	}
+
 	void ColorEditFeature(const char* featureName, float* colorEditFloat, BOOL newLine)
 	{
 		ImGui::PushItemWidth(105);
@@ -686,6 +701,125 @@ namespace ImGui
 					if (n == 22)
 					{
 						MiscSettings::iZombieTPKey = 0x5B;
+					}
+				}
+			}
+			ImGui::EndCombo();
+		}
+		ImGui::PopItemWidth();
+		if (newLine)
+		{
+			ImGui::NewLine();
+		}
+	}
+
+	void AimbotKeyComboBox(const char* featureName, float size, BOOL newLine)
+	{
+		const char* cAimbotKeySelection[] = { (" LMB"), (" RMB"), (" MMB"), (" X1MB"), (" X2MB"), (" TAB"), (" LSHIFT"), (" LCTRL"), (" LALT"), (" CAPS"), (" SPACE"),
+			(" '0'"), (" '1'"), (" '2'"), (" '3'"), (" 'C'"), (" 'E'"), (" 'F'"), (" 'Q'"), (" 'V'"), (" 'X'"), (" 'Z'"), (" LWIN") };
+		static const char* currentItem = (" Select Key");
+		ImGui::PushItemWidth(size);
+		if (ImGui::BeginCombo(featureName, currentItem, ImGuiComboFlags_NoArrowButton))
+		{
+			for (int n = 0; n < IM_ARRAYSIZE(cAimbotKeySelection); n++)
+			{
+				bool bSelected = (currentItem == cAimbotKeySelection[n]);
+				if (ImGui::Selectable(cAimbotKeySelection[n], bSelected))
+					currentItem = cAimbotKeySelection[n];
+				if (ImGui::IsItemClicked(bSelected))
+				{
+					ImGui::SetItemDefaultFocus();
+					if (n == 0)
+					{
+						AimSettings::iAimKey = 0x01;
+					}
+					if (n == 1)
+					{
+						AimSettings::iAimKey = 0x02;
+					}
+					if (n == 2)
+					{
+						AimSettings::iAimKey = 0x04;
+					}
+					if (n == 3)
+					{
+						AimSettings::iAimKey = 0x05;
+					}
+					if (n == 4)
+					{
+						AimSettings::iAimKey = 0x06;
+					}
+					if (n == 5)
+					{
+						AimSettings::iAimKey = 0x09;
+					}
+					if (n == 6)
+					{
+						AimSettings::iAimKey = 0x10;
+					}
+					if (n == 7)
+					{
+						AimSettings::iAimKey = 0x11;
+					}
+					if (n == 8)
+					{
+						AimSettings::iAimKey = 0x12;
+					}
+					if (n == 9)
+					{
+						AimSettings::iAimKey = 0x14;
+					}
+					if (n == 10)
+					{
+						AimSettings::iAimKey = 0x20;
+					}
+					if (n == 11)
+					{
+						AimSettings::iAimKey = 0x30;
+					}
+					if (n == 12)
+					{
+						AimSettings::iAimKey = 0x31;
+					}
+					if (n == 13)
+					{
+						AimSettings::iAimKey = 0x32;
+					}
+					if (n == 14)
+					{
+						AimSettings::iAimKey = 0x33;
+					}
+					if (n == 15)
+					{
+						AimSettings::iAimKey = 0x43;
+					}
+					if (n == 16)
+					{
+						AimSettings::iAimKey = 0x45;
+					}
+					if (n == 17)
+					{
+						AimSettings::iAimKey = 0x46;
+					}
+					if (n == 18)
+					{
+						AimSettings::iAimKey = 0x51;
+					}
+					if (n == 19)
+					{
+						AimSettings::iAimKey = 0x56;
+					}
+					if (n == 20)
+					{
+						AimSettings::iAimKey = 0x58;
+					}
+					if (n == 21)
+					{
+						AimSettings::iAimKey = 0x5A;
+					}
+					if (n == 22)
+					{
+						AimSettings::iAimKey = 0x5B;
 					}
 				}
 			}
@@ -1112,8 +1246,8 @@ namespace ImGui
 		Style->Colors[ImGuiCol_FrameBg] = ImColor(40, 40, 40, 255);
 		Style->Colors[ImGuiCol_FrameBgHovered] = ImColor(40, 40, 40, 255);
 		Style->Colors[ImGuiCol_FrameBgActive] = ImColor(40, 40, 40, 255);
-		Style->Colors[ImGuiCol_SliderGrab] = ImColor(255, 0, 255, 255);
-		Style->Colors[ImGuiCol_SliderGrabActive] = ImColor(255, 0, 255, 255);
+		Style->Colors[ImGuiCol_SliderGrab] = BO3Orange;
+		Style->Colors[ImGuiCol_SliderGrabActive] = ImColor(255, 100, 15, 175);
 		Style->Colors[ImGuiCol_Button] = ImColor(255, 100, 15, 255);
 		Style->Colors[ImGuiCol_ButtonHovered] = ImColor(255, 100, 15, 200);
 		Style->Colors[ImGuiCol_ButtonActive] = ImColor(255, 100, 15, 155);
@@ -1257,10 +1391,12 @@ namespace ImGui
 					{
 						ImGui::SCPY(10);
 						ImGui::CenterText("Aimbot", 10, TRUE, TRUE);
-						ImGui::SCPY(ImGui::GetY() / 2 - 50);
-						ImGui::CenterText("COMING SOON!", 0, FALSE, FALSE);
-						ImGui::SCPY(ImGui::GetY() / 2 + 50);
-						ImGui::CenterText("PLEASE BE PATIENT", 0, FALSE, FALSE);
+						ImGui::Indent(12);
+						ImGui::ToggleNL("  Aimbot", &FeatureSettings::bAimbot, TRUE);
+						ImGui::AimbotKeyComboBox("  Aim Key", 80.f, TRUE);
+						ImGui::InputFloatNL("  Aim Smooth", &AimSettings::fAimSmooth, 1.f, 10.f, 80.f, FALSE, TRUE);
+						ImGui::InputFloatNL("  FOV Size", &MiscSettings::fPlayerFovSize, 1.f, 300.f, 80.f, FALSE, FALSE);
+						ImGui::Unindent(12);
 					} ImGui::PopStyleColor(); ImGui::PopStyleVar(); ImGui::EndChild();
 
 					// Aimbot Bone Select Window.
@@ -1302,7 +1438,7 @@ namespace ImGui
 								ImGui::ToggleNL("", &FeatureSettings::bP1InfinitePoints, TRUE);
 								ImGui::InputIntNL("  Weapon Cycle", &FeatureSettings::iP1WCValue, &FeatureSettings::bP1WCycle, 80, FALSE, TRUE);
 								ImGui::ToggleNL("  Weapon Cycle HotKey", &FeatureSettings::bP1WCycleKey, TRUE);
-								ImGui::WeaponCycleComboBox("  WC HotKey", 80, FALSE);
+								ImGui::WeaponCycleComboBox("  WC HotKey", 80.f, FALSE);
 								ImGui::Unindent(12);
 								ImGui::ButtonWindowSCP(">", &UI::iPlayer1ExploitPage, 2, ImVec2(152, 390), ImVec2(50, 20), FALSE);
 							} ImGui::PopStyleColor(); ImGui::PopStyleVar(); ImGui::EndChild();
@@ -1321,7 +1457,7 @@ namespace ImGui
 								ImGui::Indent(12);
 								ImGui::ToggleNL("  Zombie Counter", &FeatureSettings::bZombieCount, TRUE);
 								ImGui::ToggleNL("  Teleport Zombie", &FeatureSettings::bZombieTP, TRUE);
-								ImGui::ZombieTPComboBox("  TP HotKey", 80, TRUE);
+								ImGui::ZombieTPComboBox("  TP HotKey", 80.f, TRUE);
 								ImGui::ToggleNL("  Zombie InstaKill", &FeatureSettings::bP1AlwaysInstaKill, TRUE);
 								ImGui::InputIntNL("  Run Speed  ", &FeatureSettings::iP1RunValue, &FeatureSettings::bP1RunSpeed, 100, FALSE, TRUE);
 								ImGui::InputIntNL("  Jumpheight", &FeatureSettings::iJumpHeightValue, &FeatureSettings::bP1JumpHeight, 100, FALSE, FALSE);

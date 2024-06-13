@@ -102,11 +102,15 @@ namespace ImGui
 
 	void InputIntNL(const char* featureName, int* featureInt, bool* featureBool, float size, BOOL sameLine, BOOL newLine);
 
+	void InputFloatNL(const char* featureName, float* featureFloat, float minValue, float maxValue, float size, BOOL sameLine, BOOL newLine);
+
 	void ColorEditFeature(const char* featureName, float* colorEditFloat, BOOL newLine);
 
 	void WeaponCycleComboBox(const char* featureName, float size, BOOL newLine);
 
 	void ZombieTPComboBox(const char* featureName, float size, BOOL newLine);
+
+	void AimbotKeyComboBox(const char* featureName, float size, BOOL newLine);
 
 	void ToggleNL(const char* toggleName, bool* featureBool, BOOL newLine);
 
