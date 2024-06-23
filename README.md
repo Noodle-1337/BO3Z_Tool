@@ -49,7 +49,7 @@ Call of Duty: Black Ops 3 Zombie Tool
 * This tool will have bugs present. I will do my best to squash as many as possible. If you wish to improve upon the codebase, feel free to make pull requests. Meaningful contributions are always welcome!
 
 ## Tool Preview
-![BO3Z_Tool1](https://imgur.com/gg6Xb7b)
+![BO3Z_Tool1](https://i.imgur.com/gg6Xb7b.png)
 ![BO3Z_Tool2](https://imgur.com/8yXPiDe)
 ![BO3Z_Tool3](https://imgur.com/Z2RxKuA)
 ![BO3Z_Tool4](https://imgur.com/yl4hWYL)
