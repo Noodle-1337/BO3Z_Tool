@@ -26,6 +26,7 @@ namespace SDK
 		uintptr_t zombieHealthMaxAddr = 0;
 		uintptr_t zombieGetPosAddr = 0;
 		uintptr_t zombieGetHeadPosAddr = 0;
+		uintptr_t zombieGetBonePosAddr = 0;
 		uintptr_t zombieGetValidAddr = 0;
 
 #pragma region Player Functions
@@ -67,10 +68,6 @@ namespace SDK
 
 		vec3_t GetPlayerPos();
 
-		vec3_t GetZombiePos(int index);
-
-		vec3_t GetZombieHeadPos(int index);
-
 		vec3_t GetHeadPosition(vec3_t origin);
 
 		void GetBox(vec2_t screenOrigin, vec2_t screenHead, vec2_t& topLeft, vec2_t& bottomRight);
@@ -84,6 +81,12 @@ namespace SDK
 		int GetZombieHealthMax(int index);
 
 		int IsZombieValid(int index);
+
+		vec3_t GetZombiePos(int index);
+
+		vec3_t GetZombieHeadPos(int index);
+
+		vec3_t GetZombieBonePos(int index, int bone);
 
 		void EnableZombieTP();
 

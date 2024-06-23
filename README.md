@@ -49,10 +49,10 @@ Call of Duty: Black Ops 3 Zombie Tool
 * This tool will have bugs present. I will do my best to squash as many as possible. If you wish to improve upon the codebase, feel free to make pull requests. Meaningful contributions are always welcome!
 
 ## Tool Preview
-![BO3Z_Tool1](https://cdn.discordapp.com/attachments/952344650306445352/1250839097522655342/image.png?ex=666c6630&is=666b14b0&hm=7f7324bf21be9fefb2c4459c8f370356f6a1b1ca0ea24bc99a7ab77edeea951d&)
-![BO3Z_Tool2](https://cdn.discordapp.com/attachments/952344650306445352/1250859909537333340/image.png?ex=666c7992&is=666b2812&hm=5a19e7a00f47c895890ef3c57a577f9da80465dcb762602b2bb68dc117e4064a&)
-![BO3Z_Tool3](https://cdn.discordapp.com/attachments/952344650306445352/1250839246135103568/image.png?ex=666c6653&is=666b14d3&hm=f256ece5da64aaacdfc7e1bc9f41ba0bc2017adbe6e0af9d9cb0bd8bb40f771a&)
-![BO3Z_Tool4](https://cdn.discordapp.com/attachments/952344650306445352/1250839306457583677/image.png?ex=666c6662&is=666b14e2&hm=55c2c2754e52a58c338787aece415c8c2a1610a9c77b12eb95270c4adefc85bd&)
+![BO3Z_Tool1](https://imgur.com/gg6Xb7b)
+![BO3Z_Tool2](https://imgur.com/8yXPiDe)
+![BO3Z_Tool3](https://imgur.com/Z2RxKuA)
+![BO3Z_Tool4](https://imgur.com/yl4hWYL)
 
 ## InGame Preview
-![BO3Z_Tool5](https://cdn.discordapp.com/attachments/952344650306445352/1250841215801360435/image.png?ex=666c6829&is=666b16a9&hm=1f89ef336be78ba8c49ab7d7d22a4bf7936da80c854ec0f81bf7a31db46192b4&)
+![BO3Z_Tool5](https://imgur.com/ZU474vy)

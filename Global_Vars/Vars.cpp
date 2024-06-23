@@ -303,6 +303,7 @@ namespace GameValues
 	float fCurrentZombiesCoordsHeadZ = 0;
 	vec3_t currentZombieCoords = { 0, 0, 0 };
 	vec3_t currentZombieHeadCoords = { 0, 0, 0 };
+	vec3_t currentZombieLSCoords = { 0, 0, 0 };
 	float fZombieDistance = 0;
 	float fClosestZombie = 0;
 	uintptr_t zombieTarget = 0;
@@ -393,6 +394,7 @@ namespace Offsets
 	std::vector <unsigned int> zombieHeadYCoord = { 0x8, 0x228 }; // New
 	std::vector <unsigned int> zombieHeadZCoord = { 0x8, 0x22C }; // New
 	std::vector <unsigned int> zombieHeadXYZCoord = { 0x8, 0x224, 0x228, 0x22C }; // New
+	std::vector <unsigned int> zombieLSCoord = { 0x8, 0x24EC }; // New
 #pragma endregion
 
 #pragma region Global Lobby Vars

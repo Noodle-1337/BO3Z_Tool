@@ -304,6 +304,7 @@ namespace GameValues
 	extern float fCurrentZombiesCoordsHeadZ;
 	extern vec3_t currentZombieCoords;
 	extern vec3_t currentZombieHeadCoords;
+	extern vec3_t currentZombieLSCoords;
 	extern float fZombieDistance;
 	extern float fClosestZombie;
 	extern uintptr_t zombieTarget;
@@ -394,6 +395,7 @@ namespace Offsets
 	extern std::vector <unsigned int> zombieHeadYCoord;
 	extern std::vector <unsigned int> zombieHeadZCoord;
 	extern std::vector <unsigned int> zombieHeadXYZCoord;
+	extern std::vector <unsigned int> zombieLSCoord;
 #pragma endregion
 
 #pragma region Global Lobby Vars

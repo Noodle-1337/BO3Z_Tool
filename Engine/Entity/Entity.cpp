@@ -68,6 +68,7 @@ namespace SDK
 		zombieHealthMaxAddr = Utils::PointerChain(Game::hProc, Offsets::zombieBase, Offsets::zombieHealthMaxOffset);
 		zombieGetPosAddr = Utils::PointerChain(Game::hProc, Offsets::zombieBase, Offsets::zombieCoord);
 		zombieGetHeadPosAddr = Utils::PointerChain(Game::hProc, Offsets::zombieBase, Offsets::zombieHeadCoord);
+		zombieGetBonePosAddr = Utils::PointerChain(Game::hProc, Offsets::zombieBase, Offsets::zombieLSCoord);
 		zombieGetValidAddr = Utils::PointerChain(Game::hProc, Offsets::zombieBase, Offsets::zombieValidOffset);
 	}
 
@@ -434,6 +435,12 @@ namespace SDK
 	{
 		Utils::Read((BYTE*)zombieGetHeadPosAddr + (Offsets::zombieArraySize * index), (BYTE*)&GameValues::currentZombieHeadCoords, sizeof(GameValues::currentZombieHeadCoords), Game::hProc);
 		return GameValues::currentZombieHeadCoords;
+	}
+
+	vec3_t Entity_t::GetZombieBonePos(int index, int bone)
+	{
+		Utils::Read((BYTE*)zombieGetBonePosAddr + (Offsets::zombieArraySize * index), (BYTE*)&GameValues::currentZombieLSCoords, sizeof(GameValues::currentZombieLSCoords), Game::hProc);
+		return GameValues::currentZombieLSCoords;
 	}
 
 	void Entity_t::EnableZombieTP()

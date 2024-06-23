@@ -636,7 +636,7 @@ namespace Engine
 
 				if (SDK::WorldToScreen(vZombiePos, vScreen, (float)UI::iScreenWidth, (float)UI::iScreenHeight))
 				{
-					vHeadPos = entity.GetHeadPosition(vZombieHeadPos);
+					vHeadPos = entityAim.GetHeadPosition(vZombieHeadPos);
 
 					if (SDK::WorldToScreen(vHeadPos, vScreenHead, (float)UI::iScreenWidth, (float)UI::iScreenHeight))
 					{
